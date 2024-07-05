@@ -1,29 +1,32 @@
-import 'package:dalel/core/utils/app_assets.dart';
 import 'package:dalel/core/utils/app_text_style.dart';
+import 'package:dalel/feature/on_bording/data/models/on_bording_model.dart';
 import 'package:dalel/feature/on_bording/presentation/views/Widgets/custom_smoothpage_indicator.dart';
 import 'package:flutter/material.dart';
 
 class OnBordingWidgetBody extends StatelessWidget {
-  OnBordingWidgetBody({super.key});
-  final PageController _controller = PageController();
+  const OnBordingWidgetBody(
+      {super.key, required this.controller, this.onPageChanged});
 
+  final PageController controller;
+  final Function(int)? onPageChanged;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 500,
       child: PageView.builder(
-          controller: _controller,
-          itemCount: 3,
+          onPageChanged: onPageChanged,
+          controller: controller,
+          itemCount: onbordingData.length,
           itemBuilder: (context, index) {
             return Column(
               children: [
                 Container(
                   height: 290,
                   width: 343,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(
-                          Assets.assetsImagesOnBoarding1,
+                          onbordingData[index].imagePath,
                         ),
                         fit: BoxFit.fill),
                   ),
@@ -31,12 +34,12 @@ class OnBordingWidgetBody extends StatelessWidget {
                 const SizedBox(
                   height: 24,
                 ),
-                CustomSmoothPageIndecator(controller: _controller),
+                CustomSmoothPageIndecator(controller: controller),
                 const SizedBox(
                   height: 32,
                 ),
                 Text(
-                  'Explore The history withDalel in a smart way',
+                  onbordingData[index].titel,
                   style: CustomtextStyles.poppins600style28
                       .copyWith(fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
@@ -47,7 +50,7 @@ class OnBordingWidgetBody extends StatelessWidget {
                   height: 16,
                 ),
                 Text(
-                  'Using our app’s history libraries you can find many historical periods ',
+                  onbordingData[index].subTitel,
                   style: CustomtextStyles.poppins400style12,
                   textAlign: TextAlign.center,
                   maxLines: 2,

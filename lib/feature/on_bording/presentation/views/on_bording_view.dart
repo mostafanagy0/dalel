@@ -1,11 +1,19 @@
-import 'package:dalel/core/utils/App_Strings.dart';
-import 'package:dalel/core/widgets/custom_buttom.dart';
+import 'package:dalel/core/func/navigation.dart';
 import 'package:dalel/feature/on_bording/presentation/views/Widgets/custom_nav_bar.dart';
+import 'package:dalel/feature/on_bording/presentation/views/Widgets/get_bottons.dart';
 import 'package:dalel/feature/on_bording/presentation/views/Widgets/onBording_Widget_Body.dart';
 import 'package:flutter/material.dart';
 
-class OnBordingView extends StatelessWidget {
+class OnBordingView extends StatefulWidget {
   const OnBordingView({super.key});
+
+  @override
+  State<OnBordingView> createState() => _OnBordingViewState();
+}
+
+class _OnBordingViewState extends State<OnBordingView> {
+  final PageController _controller = PageController(initialPage: 0);
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -18,17 +26,23 @@ class OnBordingView extends StatelessWidget {
               const SizedBox(
                 height: 40,
               ),
-              const CustomNavBar(),
-              OnBordingWidgetBody(),
+              CustomNavBar(
+                onTap: () {
+                  customReplacementNavigate(context, '/signUp');
+                },
+              ),
+              OnBordingWidgetBody(
+                onPageChanged: (index) {
+                  setState(() {
+                    currentIndex = index;
+                  });
+                },
+                controller: _controller,
+              ),
               const SizedBox(
                 height: 88,
               ),
-              const CustomButtom(
-                text: AppStrings.next,
-              ),
-              const SizedBox(
-                height: 17,
-              )
+              GetButtons(currentIndex: currentIndex, controller: _controller)
             ],
           ),
         ),
