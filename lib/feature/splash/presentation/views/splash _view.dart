@@ -1,4 +1,6 @@
+import 'package:dalel/core/database/cashe/cash_helper.dart';
 import 'package:dalel/core/func/navigation.dart';
+import 'package:dalel/core/services/service_locator.dart';
 import 'package:dalel/core/utils/App_Strings.dart';
 import 'package:dalel/core/utils/app_text_style.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +15,15 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
+    bool isOnBordingVisited =
+        getIt<CacheHelper>().getData(key: "isOnBordingVisited") ?? false;
+    if (isOnBordingVisited == true) {
+      delayedNavigation(context, "/signUp ");
+    } else {
+      delayedNavigation(context, "/onBording");
+    }
     //extracted
-    delayedNavigation(context);
+
     super.initState();
   }
 
@@ -31,7 +40,7 @@ class _SplashViewState extends State<SplashView> {
   }
 }
 
-void delayedNavigation(context) {
+void delayedNavigation(context, path) {
   Future.delayed(const Duration(seconds: 2), () {
     customReplacementNavigate(context, "/onBording");
   });

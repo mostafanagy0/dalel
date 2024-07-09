@@ -2,6 +2,7 @@ import 'package:dalel/core/func/navigation.dart';
 import 'package:dalel/feature/on_bording/presentation/views/Widgets/custom_nav_bar.dart';
 import 'package:dalel/feature/on_bording/presentation/views/Widgets/get_bottons.dart';
 import 'package:dalel/feature/on_bording/presentation/views/Widgets/onBording_Widget_Body.dart';
+import 'package:dalel/feature/on_bording/presentation/views/functions/on_bording.dart';
 import 'package:flutter/material.dart';
 
 class OnBordingView extends StatefulWidget {
@@ -28,6 +29,8 @@ class _OnBordingViewState extends State<OnBordingView> {
               ),
               CustomNavBar(
                 onTap: () {
+                  onBordingVisited();
+
                   customReplacementNavigate(context, '/signUp');
                 },
               ),

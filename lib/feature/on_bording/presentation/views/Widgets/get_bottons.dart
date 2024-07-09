@@ -3,6 +3,7 @@ import 'package:dalel/core/utils/App_Strings.dart';
 import 'package:dalel/core/utils/app_text_style.dart';
 import 'package:dalel/core/widgets/custom_buttom.dart';
 import 'package:dalel/feature/on_bording/data/models/on_bording_model.dart';
+import 'package:dalel/feature/on_bording/presentation/views/functions/on_bording.dart';
 import 'package:flutter/material.dart';
 
 class GetButtons extends StatelessWidget {
@@ -19,6 +20,7 @@ class GetButtons extends StatelessWidget {
           CustomButtom(
             text: AppStrings.createAccount,
             onPressed: () {
+              onBordingVisited();
               customReplacementNavigate(context, '/signUp');
             },
           ),
@@ -27,6 +29,7 @@ class GetButtons extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
+              onBordingVisited();
               customReplacementNavigate(context, '/signIn');
             },
             child: Text(
