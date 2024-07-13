@@ -10,7 +10,7 @@ class AuthCubit extends Cubit<AuthState> {
   String? lastName;
   String? emailAddress;
   String? password;
-  bool? updateTermesAndConditionCheckBoxValue;
+  bool? updateTermesAndConditionCheckBoxValue = false;
   GlobalKey<FormState> signupFormkey = GlobalKey();
 
   signUpWithEmailAndPassWord() async {
