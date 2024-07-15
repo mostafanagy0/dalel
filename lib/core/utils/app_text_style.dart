@@ -1,7 +1,7 @@
 import 'package:dalel/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
-abstract class CustomtextStyles {
+abstract class CustomTextStyles {
   static final pacifico400style64 = TextStyle(
     fontSize: 64,
     fontWeight: FontWeight.w400,
@@ -31,5 +31,11 @@ abstract class CustomtextStyles {
     fontWeight: FontWeight.w400,
     color: AppColors.black,
     fontFamily: "Poppins",
+  );
+  static const saira700style32 = TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+    fontFamily: "Saira",
   );
 }

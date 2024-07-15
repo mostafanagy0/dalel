@@ -14,7 +14,7 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const SplashView(),
     ),
     GoRoute(
-      path: "/onBording",
+      path: "/OnBording",
       builder: (context, state) => const OnBordingView(),
     ),
     GoRoute(

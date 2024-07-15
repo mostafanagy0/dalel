@@ -1,4 +1,9 @@
 import 'package:dalel/core/func/navigation.dart';
+import 'package:dalel/core/utils/App_Strings.dart';
+import 'package:dalel/feature/auth/presentation/widgets/custom_signin_form.dart';
+import 'package:dalel/feature/auth/presentation/widgets/have_account_widget.dart';
+import 'package:dalel/feature/auth/presentation/widgets/welcom_text_widget.dart';
+import 'package:dalel/feature/auth/presentation/widgets/welcome_banner.dart';
 import 'package:flutter/material.dart';
 
 class SignInView extends StatelessWidget {
@@ -7,13 +12,43 @@ class SignInView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: () {
-                customNavigate(context, "/signUp");
+      body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          const SliverToBoxAdapter(
+            child: WelcomeBanner(),
+          ),
+          const SliverToBoxAdapter(
+            child: SizedBox(height: 32),
+          ),
+          const SliverToBoxAdapter(
+            child: WelcomeTextWidget(text: AppStrings.welcomeBack),
+          ),
+          const SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: CustomSignInForm(),
+            ),
+          ),
+          const SliverToBoxAdapter(
+            child: SizedBox(
+              height: 16,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: HaveAnAccountWidget(
+              text1: AppStrings.dontHaveAnAccount,
+              text2: AppStrings.signUp,
+              onTap: () {
+                customReplacementNavigate(context, "/signUp");
               },
-              icon: const Icon(Icons.logout))
+            ),
+          ),
+          const SliverToBoxAdapter(
+            child: SizedBox(
+              height: 16,
+            ),
+          )
         ],
       ),
     );

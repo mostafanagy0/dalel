@@ -34,7 +34,7 @@ class GetButtons extends StatelessWidget {
             },
             child: Text(
               AppStrings.loginNow,
-              style: CustomtextStyles.poppins400style12
+              style: CustomTextStyles.poppins400style12
                   .copyWith(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           )

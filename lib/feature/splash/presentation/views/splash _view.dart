@@ -20,10 +20,10 @@ class _SplashViewState extends State<SplashView> {
         getIt<CacheHelper>().getData(key: "isOnBordingVisited") ?? false;
     if (isOnBordingVisited == true) {
       FirebaseAuth.instance.currentUser == null
-          ? delayedNavigation(context, "/signUp")
+          ? delayedNavigation(context, "/signIn")
           : delayedNavigation(context, "/home");
     } else {
-      delayedNavigation(context, "/onBording");
+      delayedNavigation(context, "/OnBording");
     }
 
     super.initState();
@@ -35,7 +35,7 @@ class _SplashViewState extends State<SplashView> {
       body: Center(
         child: Text(
           AppStrings.appName,
-          style: CustomtextStyles.pacifico400style64,
+          style: CustomTextStyles.pacifico400style64,
         ),
       ),
     );

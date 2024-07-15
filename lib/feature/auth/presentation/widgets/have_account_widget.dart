@@ -14,10 +14,10 @@ class HaveAnAccountWidget extends StatelessWidget {
       onTap: onTap,
       child: Align(
         child: Text.rich(TextSpan(children: [
-          TextSpan(text: text1, style: CustomtextStyles.pacifico400style12),
+          TextSpan(text: text1, style: CustomTextStyles.pacifico400style12),
           TextSpan(
               text: text2,
-              style: CustomtextStyles.pacifico400style12
+              style: CustomTextStyles.pacifico400style12
                   .copyWith(color: AppColors.lightGrey))
         ])),
       ),

@@ -27,7 +27,7 @@ class CustomTextFormFeild extends StatelessWidget {
         onFieldSubmitted: onFieldSubmitted,
         decoration: InputDecoration(
           labelText: labelText,
-          labelStyle: CustomtextStyles.poppins500style18,
+          labelStyle: CustomTextStyles.poppins500style18,
           border: getBorderStyle(),
           focusedBorder: getBorderStyle(),
           enabledBorder: getBorderStyle(),

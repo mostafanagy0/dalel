@@ -21,7 +21,7 @@ class CustomButtom extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10))),
         child: Text(
           text,
-          style: CustomtextStyles.poppins600style28
+          style: CustomTextStyles.poppins600style28
               .copyWith(fontSize: 16, color: AppColors.offWhite),
         ),
       ),

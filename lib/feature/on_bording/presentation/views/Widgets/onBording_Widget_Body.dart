@@ -40,7 +40,7 @@ class OnBordingWidgetBody extends StatelessWidget {
                 ),
                 Text(
                   onbordingData[index].titel,
-                  style: CustomtextStyles.poppins600style28
+                  style: CustomTextStyles.poppins600style28
                       .copyWith(fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                   maxLines: 2,
@@ -51,7 +51,7 @@ class OnBordingWidgetBody extends StatelessWidget {
                 ),
                 Text(
                   onbordingData[index].subTitel,
-                  style: CustomtextStyles.poppins400style12,
+                  style: CustomTextStyles.poppins400style12,
                   textAlign: TextAlign.center,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
