@@ -13,6 +13,7 @@ class AuthCubit extends Cubit<AuthState> {
   bool? updateTermesAndConditionCheckBoxValue = false;
   GlobalKey<FormState> signupFormkey = GlobalKey();
   GlobalKey<FormState> signInFormkey = GlobalKey();
+  GlobalKey<FormState> forgotpasswordFormkey = GlobalKey();
 
   signUpWithEmailAndPassWord() async {
     try {
@@ -22,6 +23,7 @@ class AuthCubit extends Cubit<AuthState> {
         email: emailAddress!,
         password: password!,
       );
+      verifyEmail();
       emit(SignUpSuccessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -30,6 +32,8 @@ class AuthCubit extends Cubit<AuthState> {
       } else if (e.code == 'email-already-in-use') {
         emit(SignUpFailureState(
             errMessage: 'The account already exists for that email.'));
+      } else if (e.code == 'invalid-email') {
+        emit(SignUpFailureState(errMessage: 'The Email Is Invalid'));
       }
     } catch (e) {
       emit(SignUpFailureState(errMessage: e.toString()));
@@ -48,16 +52,31 @@ class AuthCubit extends Cubit<AuthState> {
           email: emailAddress!, password: password!);
       emit(SignInSuccessState());
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        emit(SignUpFailureState(errMessage: 'No user found for that email.'));
-      } else if (e.code == 'wrong-password') {
+      if (e.code == 'email-already-in-use') {
         emit(SignUpFailureState(
-            errMessage: 'Wrong password provided for that user.'));
+            errMessage: 'The account already exists for that email.'));
+      } else if (e.code == 'weak-password') {
+        emit(SignUpFailureState(
+            errMessage: 'The password provided is too weak.'));
       } else {
         emit(SignInFailureState(errMessage: 'Chech Your Email Or passWord'));
       }
     } catch (e) {
       emit(SignInFailureState(errMessage: e.toString()));
+    }
+  }
+
+  verifyEmail() async {
+    await FirebaseAuth.instance.currentUser!.sendEmailVerification();
+  }
+
+  resetPasswordWithLink() async {
+    try {
+      emit(ResetPasswordlodingStete());
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: emailAddress!);
+      emit(ResetPasswordSuccessState());
+    } catch (e) {
+      emit(ResetPasswordFailureState(errMessage: e.toString()));
     }
   }
 }
