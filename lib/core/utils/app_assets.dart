@@ -1,6 +1,6 @@
 class Assets {
   Assets._();
-  
+
   /// Assets for assetsImagesDetails1
   /// assets/images/details1.svg
   static const String assetsImagesDetails1 = "assets/images/details1.svg";
@@ -15,7 +15,8 @@ class Assets {
 
   /// Assets for assetsImagesForgotPassword
   /// assets/images/forgotPassword.png
-  static const String assetsImagesForgotPassword = "assets/images/forgotPassword.png";
+  static const String assetsImagesForgotPassword =
+      "assets/images/forgotPassword.png";
 
   /// Assets for assetsImagesFrame
   /// assets/images/Frame.png
@@ -35,7 +36,8 @@ class Assets {
 
   /// Assets for assetsImagesHomeIconActive
   /// assets/images/home-icon-active.svg
-  static const String assetsImagesHomeIconActive = "assets/images/home-icon-active.svg";
+  static const String assetsImagesHomeIconActive =
+      "assets/images/home-icon-active.svg";
 
   /// Assets for assetsImagesMenu
   /// assets/images/menu.svg
@@ -59,7 +61,8 @@ class Assets {
 
   /// Assets for assetsImagesPersonActive
   /// assets/images/person-active.svg
-  static const String assetsImagesPersonActive = "assets/images/person-active.svg";
+  static const String assetsImagesPersonActive =
+      "assets/images/person-active.svg";
 
   /// Assets for assetsImagesSearch
   /// assets/images/search.svg
@@ -67,19 +70,23 @@ class Assets {
 
   /// Assets for assetsImagesSearchActive
   /// assets/images/search-active.svg
-  static const String assetsImagesSearchActive = "assets/images/search-active.svg";
+  static const String assetsImagesSearchActive =
+      "assets/images/search-active.svg";
 
   /// Assets for assetsImagesShoppingCart
   /// assets/images/shopping-cart.svg
-  static const String assetsImagesShoppingCart = "assets/images/shopping-cart.svg";
+  static const String assetsImagesShoppingCart =
+      "assets/images/shopping-cart.svg";
 
   /// Assets for assetsImagesShoppingCartActive
   /// assets/images/shopping-cart-active.svg
-  static const String assetsImagesShoppingCartActive = "assets/images/shopping-cart-active.svg";
+  static const String assetsImagesShoppingCartActive =
+      "assets/images/shopping-cart-active.svg";
 
   /// Assets for assetsImagesSucccesOrder
   /// assets/images/succcesOrder.png
-  static const String assetsImagesSucccesOrder = "assets/images/succcesOrder.png";
+  static const String assetsImagesSucccesOrder =
+      "assets/images/succcesOrder.png";
 
   /// Assets for assetsImagesVector1
   /// assets/images/vector1.svg
@@ -89,4 +96,3 @@ class Assets {
   /// assets/images/vector2.svg
   static const String assetsImagesVector2 = "assets/images/vector2.svg";
 }
-

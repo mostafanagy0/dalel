@@ -1,8 +1,8 @@
 import 'package:dalel/feature/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
-import 'package:dalel/feature/auth/presentation/views/forgot_password.dart';
+import 'package:dalel/feature/auth/presentation/views/forgot_password_view.dart';
 import 'package:dalel/feature/auth/presentation/views/signIn_view.dart';
 import 'package:dalel/feature/auth/presentation/views/signUp_View.dart';
-import 'package:dalel/feature/home/presentation/views/home_view.dart';
+import 'package:dalel/feature/home/presentation/widgets/home_nav_bar_widget.dart';
 import 'package:dalel/feature/on_bording/presentation/views/on_bording_view.dart';
 import 'package:dalel/feature/splash/presentation/views/splash%20_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,8 +33,8 @@ final GoRouter router = GoRouter(
       ),
     ),
     GoRoute(
-      path: "/home",
-      builder: (context, state) => const HomeView(),
+      path: "/homeNavBar",
+      builder: (context, state) => const HomeNavBarWidget(),
     ),
     GoRoute(
       path: "/forgotPassword",

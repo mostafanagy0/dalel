@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dalel/feature/auth/presentation/auth_cubit/cubit/auth_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class AuthCubit extends Cubit<AuthState> {
   GlobalKey<FormState> signInFormkey = GlobalKey();
   GlobalKey<FormState> forgotpasswordFormkey = GlobalKey();
 
-  signUpWithEmailAndPassWord() async {
+  Future<void> signUpWithEmailAndPassWord() async {
     try {
       emit(SignUplodingStete());
 
@@ -23,7 +24,8 @@ class AuthCubit extends Cubit<AuthState> {
         email: emailAddress!,
         password: password!,
       );
-      verifyEmail();
+      //await addUseProfile();
+      await verifyEmail();
       emit(SignUpSuccessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -40,12 +42,12 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  updateTermesAndConditionCheckBox({required newValue}) {
+  void updateTermesAndConditionCheckBox({required newValue}) {
     updateTermesAndConditionCheckBoxValue = newValue;
-    emit(SignUpTermesAndconditionsUpdateState());
+    emit(TermesAndconditionsUpdateState());
   }
 
-  signInWithEmailAndPassword() async {
+  Future<void> signInWithEmailAndPassword() async {
     try {
       emit(SignInlodingStete());
       await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -66,11 +68,11 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  verifyEmail() async {
+  Future<void> verifyEmail() async {
     await FirebaseAuth.instance.currentUser!.sendEmailVerification();
   }
 
-  resetPasswordWithLink() async {
+  Future<void> resetPasswordWithLink() async {
     try {
       emit(ResetPasswordlodingStete());
       await FirebaseAuth.instance.sendPasswordResetEmail(email: emailAddress!);
@@ -78,5 +80,14 @@ class AuthCubit extends Cubit<AuthState> {
     } catch (e) {
       emit(ResetPasswordFailureState(errMessage: e.toString()));
     }
+  }
+
+  Future<void> addUseProfile() async {
+    CollectionReference users = FirebaseFirestore.instance.collection("users");
+    await users.add({
+      "first_name": fristName,
+      "last_name": lastName,
+      "email": emailAddress,
+    });
   }
 }

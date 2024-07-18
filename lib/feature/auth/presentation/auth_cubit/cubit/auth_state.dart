@@ -32,4 +32,4 @@ final class ResetPasswordFailureState extends AuthState {
   ResetPasswordFailureState({required this.errMessage});
 }
 
-final class SignUpTermesAndconditionsUpdateState extends AuthState {}
+final class TermesAndconditionsUpdateState extends AuthState {}

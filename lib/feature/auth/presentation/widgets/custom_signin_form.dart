@@ -20,7 +20,7 @@ class CustomSignInForm extends StatelessWidget {
       listener: (context, state) {
         if (state is SignInSuccessState) {
           FirebaseAuth.instance.currentUser!.emailVerified
-              ? customReplacementNavigate(context, "/home")
+              ? customReplacementNavigate(context, "/homeNavBar")
               : showToast("Please Verify Your Account");
         } else if (state is SignInFailureState) {
           showToast(state.errMessage);
@@ -55,11 +55,11 @@ class CustomSignInForm extends StatelessWidget {
                         color: AppColors.primaryColor,
                       )
                     : CustomButtom(
-                        onPressed: () {
+                        onPressed: () async {
                           {
                             if (authCubit.signInFormkey.currentState!
                                 .validate()) {
-                              authCubit.signInWithEmailAndPassword();
+                              await authCubit.signInWithEmailAndPassword();
                             }
                           }
                         },
