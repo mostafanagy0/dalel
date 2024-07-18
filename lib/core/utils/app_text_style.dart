@@ -38,4 +38,16 @@ abstract class CustomTextStyles {
     color: Colors.white,
     fontFamily: "Saira",
   );
+  static final poppins400style20 = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    color: AppColors.deepBrown,
+    fontFamily: "Poppins",
+  );
+  static final poppins500style14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.deepBrown,
+    fontFamily: "Poppins",
+  );
 }
